@@ -3,18 +3,18 @@ import java.util.*;
 public class MarkovModel {
 
     // Instance Variables
-    private int k;  // the order
-    private String s;  // the original string
-    private HashMap<String, Integer> map; // HashMap to map strings with their respective frequencies
-    private PriorityQueue <String> list1; // PriorityQueue to store the strings generated to compute likelihood for BestModel
+    private int k;  
+    private String s;  
+    private HashMap<String, Integer> map;
+    private PriorityQueue <String> list1; 
 
 
     //constructor
     public MarkovModel(int k, String s){
-        this.k = k;  //Initialising k
-        this.s = s;  // Initialising s
-        this.map = new HashMap<String,Integer>(); // Initialising map
-        list1 = new PriorityQueue<>(); // Initialising PQ
+        this.k = k;  
+        this.s = s;  
+        this.map = new HashMap<String,Integer>(); 
+        list1 = new PriorityQueue<>(); 
 
         // Generating the frequencies for the (k) of the original string by calling generate(int i, int num, String string)
         for(int i = 0; i < this.s.length(); i++){
@@ -23,9 +23,6 @@ public class MarkovModel {
                 map.put(string, map.get(string)+1); // given ST is a logarithmic performance.
             }
             else map.put(string, 1);
-
-            //  Generating the frequencies for the (k+1) of the original string by calling generate(int i, int num, String string)
-            // function and mapping it to their frequencies in the map.
             int num = k+1;
             String string2 = generate(i, num, this.s);
             if(map.containsKey(string2)){
